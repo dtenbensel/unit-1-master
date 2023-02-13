@@ -34,45 +34,31 @@ function cities(){
     //create a header row
     var headerRow = document.createElement("tr");
 
-    //add city column to header row
-    var cityHeader = document.createElement("th");
-    cityHeader.innerHTML = "City";
-    headerRow.appendChild(cityHeader);
-
-    //add population column to header row
-    var popHeader = document.createElement("th");
-    popHeader.innerHTML = "Population";
-    headerRow.appendChild(popHeader);
+    //add the "City" and "Population" columns to the header row
+    headerRow.insertAdjacentHTML("beforeend","<th>City</th><th>Population</th>")
 
     //add the header row
     table.appendChild(headerRow);
 
-    //Example 2.3 line 41...loop to add a new row for each city
-    for (var i = 0; i < cityPop.length; i++){
-        var tr = document.createElement("tr");
-
-        var city = document.createElement("td");
-        city.innerHTML = cityPop[i].city; //NOTE DIFFERENT SYNTAX
-        tr.appendChild(city);
-
-        var pop = document.createElement("td");
-        pop.innerHTML = cityPop[i].population; //NOTE DIFFERENT SYNTAX
-        tr.appendChild(pop);
-
-        table.appendChild(tr);
-    };
+    //loop to add a new row for each city
+    for(var i = 0; i < cityPop.length; i++){
+        //assign longer html strings to a variable
+        var rowHtml = "<tr><td>" + cityPop[i].city + "</td><td>" + cityPop[i].population + "</td></tr>";
+        //add the row's html string to the table
+        table.insertAdjacentHTML('beforeend',rowHtml);
+    }
 
     //add the table to the div in index.html
-    var mydiv = document.getElementById("mydiv");
-    mydiv.appendChild(table);
+    //var mydiv = document.getElementById("mydiv"); (old)
+    //mydiv.appendChild(table); (old)
+    document.querySelector("#mydiv").appendChild(table);
+
 };
-//more effecient way of initializing
-//window.onload = initialize();
-document.addEventListener('DOMContentLoaded',initialize)
 
 	function addColumns(cityPop){
-		//document.querySelectorAll("tr").forEach(function(row, i){
+		
 		document.querySelectorAll("tr").forEach(function(row, i){
+            
 
 			if (i == 0){
 
@@ -125,3 +111,5 @@ document.addEventListener('DOMContentLoaded',initialize)
 		//document.querySelector("table").addEventListener("click"), clickme()
 	});
 };
+//more effecient way of initializing
+document.addEventListener('DOMContentLoaded',initialize)
