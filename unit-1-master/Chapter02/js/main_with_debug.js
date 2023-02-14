@@ -2,7 +2,7 @@
 function initialize(){
     cities();
     addEvents();
-    addColumns();
+    
     clickme();
 };
 
@@ -26,6 +26,7 @@ function cities(){
             city: 'Superior',
             population: 27244
         }
+        
     ];
 
     //create a table element
@@ -52,7 +53,7 @@ function cities(){
     //var mydiv = document.getElementById("mydiv"); (old)
     //mydiv.appendChild(table); (old)
     document.querySelector("#mydiv").appendChild(table);
-
+    addColumns(cityPop);
 };
 
 	function addColumns(cityPop){
