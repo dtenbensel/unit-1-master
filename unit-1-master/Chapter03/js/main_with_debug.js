@@ -1,3 +1,5 @@
+
+
 //initialize function called when script loads
 function initialize(){
     cities();
