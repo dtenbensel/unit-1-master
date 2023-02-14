@@ -2,7 +2,6 @@
 function initialize(){
     cities();
     addEvents();
-    
     clickme();
 };
 
@@ -53,9 +52,10 @@ function cities(){
     //var mydiv = document.getElementById("mydiv"); (old)
     //mydiv.appendChild(table); (old)
     document.querySelector("#mydiv").appendChild(table);
+    //initialize add Columns function within the cities function (references cityPop variable)
     addColumns(cityPop);
 };
-
+//Call addColumns (conditional statement to add City size header and Small, medium, large)
 	function addColumns(cityPop){
 		
 		document.querySelectorAll("tr").forEach(function(row, i){
@@ -82,11 +82,11 @@ function cities(){
 			};
 		});
 	};
-
+//This function creates an event in which the text color changes upon a "mouseover"
 	function addEvents(){
     //added 2 arguments to event listener by moving ) down
     document.querySelector("table").addEventListener("mouseover", function(){
-        
+            //THis step is an algorithm for a random color
 			var color = "rgb(";
 
 			for (var i=0; i<3; i++){
