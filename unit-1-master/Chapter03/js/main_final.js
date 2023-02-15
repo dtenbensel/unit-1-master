@@ -166,12 +166,14 @@ function debugAjax(){
 			//check the data
             console.log(myData)
 
+            document.querySelector("#mydiv").insertAdjacentHTML('beforeend','<br>GeoJSON data:</br>' + JSON.stringify(myData))
+
 		})
 
-	//check the data
+	//check the data= undefined
 	console.log(myData)
 
-	document.querySelector("#mydiv").insertAdjacentHTML('beforeend','<br>GeoJSON data:</br>' + JSON.stringify(myData))
+	
 };
 
 //document.querySelector("#mydiv").insertAdjacentHTML('beforeend', 'GeoJSON data: ' + JSON.stringify(myData))
