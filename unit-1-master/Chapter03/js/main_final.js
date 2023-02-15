@@ -165,7 +165,7 @@ function debugAjax(){
 
 			//check the data
             console.log(myData)
-
+            //must reference this line within this function
             document.querySelector("#mydiv").insertAdjacentHTML('beforeend','<br>GeoJSON data:</br>' + JSON.stringify(myData))
 
 		})
@@ -178,4 +178,4 @@ function debugAjax(){
 
 //document.querySelector("#mydiv").insertAdjacentHTML('beforeend', 'GeoJSON data: ' + JSON.stringify(myData))
 document.addEventListener('DOMContentLoaded',debugAjax)
-//Week 4 Activity Completed
+//Week 4 Activity Complete
