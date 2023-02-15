@@ -1,22 +1,12 @@
+//Example 2.7 line 1
 function jsAjax(){
-    // Step 1: Create the data request 
-    var request = new Request('data/MegaCities.geojson');
-    //Step 2: define Fetch parameters 
-    var init = {
-        method: 'GET'
-    }
-    //Step 3: use Fetch to retrieve data
-    fetch(request, init)
-        .then(conversion) //Step 4 convert data to usable form
-        .then(callback) //Step 5 Send retrieved data to a callback function
+    //use Fetch to retrieve data
+    fetch('data/MegaCities.geojson')
+        .then(function(response){
+            return response.json();
+        }) 
+        .then(callback) 
 };
-
-//define conversion callback function
-function conversion(response){
-  //convert data to usable form
-  return response.json();
-}
-
 //define callback function
 function callback(response){
     //tasks using the data go here
