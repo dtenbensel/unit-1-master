@@ -3,7 +3,7 @@ function initialize(){
     cities();
     addEvents();
     clickme();
-    debugAjax()
+    debugAjax();
 };
 
 //Example 2.3 line 6...function to create a table with cities and their populations
@@ -144,6 +144,11 @@ function callback(response){
 window.onload = jsAjax();
 
 //**************************************Debugged ajax is below**************************************************************
+
+//Unneccessary?
+//function debugCallback(response){
+	//document.querySelector("#mydiv").insertAdjacentHTML('beforeend', 'GeoJSON data: ' + JSON.stringify(myData))
+//};
 
 //define fetch request
 function debugAjax(){
