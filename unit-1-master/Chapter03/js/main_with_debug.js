@@ -1,10 +1,7 @@
-
-
 //initialize function called when script loads
 function initialize(){
     cities();
     addEvents();
-    addColumns();
     clickme();
 };
 
@@ -28,6 +25,7 @@ function cities(){
             city: 'Superior',
             population: 27244
         }
+        
     ];
 
     //create a table element
@@ -54,9 +52,10 @@ function cities(){
     //var mydiv = document.getElementById("mydiv"); (old)
     //mydiv.appendChild(table); (old)
     document.querySelector("#mydiv").appendChild(table);
-
+    //initialize add Columns function within the cities function (references cityPop variable)
+    addColumns(cityPop);
 };
-
+//Call addColumns (conditional statement to add City size header and Small, medium, large)
 	function addColumns(cityPop){
 		
 		document.querySelectorAll("tr").forEach(function(row, i){
@@ -83,11 +82,11 @@ function cities(){
 			};
 		});
 	};
-
+//This function creates an event in which the text color changes upon a "mouseover"
 	function addEvents(){
     //added 2 arguments to event listener by moving ) down
     document.querySelector("table").addEventListener("mouseover", function(){
-        
+            //THis step is an algorithm for a random color
 			var color = "rgb(";
 
 			for (var i=0; i<3; i++){
@@ -115,3 +114,30 @@ function cities(){
 };
 //more effecient way of initializing
 document.addEventListener('DOMContentLoaded',initialize)
+
+function jsAjax(){
+    // Step 1: Create the data request 
+    var request = new Request('data/MegaCities.geojson');
+    //Step 2: define Fetch parameters 
+    var init = {
+        method: 'GET'
+    }
+    //Step 3: use Fetch to retrieve data
+    fetch(request, init)
+        .then(conversion) //Step 4 convert data to usable form
+        .then(callback) //Step 5 Send retrieved data to a callback function
+};
+
+//define conversion callback function
+function conversion(response){
+  //convert data to usable form
+  return response.json();
+}
+
+//define callback function
+function callback(response){
+    //tasks using the data go here
+    console.log(response)
+}
+
+window.onload = jsAjax();

@@ -1,69 +1,26 @@
-//initialize function called when the script loads
-function initialize(){
-    cities();
+function jsAjax(){
+    // Step 1: Create the data request 
+    var request = new Request('data/MegaCities.geojson');
+    //Step 2: define Fetch parameters 
+    var init = {
+        method: 'GET'
+    }
+    //Step 3: use Fetch to retrieve data
+    fetch(request, init)
+        .then(conversion) //Step 4 convert data to usable form
+        .then(callback) //Step 5 Send retrieved data to a callback function
 };
 
-//function to create a table with cities and their populations
-function cities(){
-    //define two arrays for cities and population
-    var cities = [
-        'Madison',
-        'Milwaukee',
-        'Green Bay',
-        'Superior'
-    ];
-    var population = [
-        233209,
-        594833,
-        104057,
-        27244
-    ];
+//define conversion callback function
+function conversion(response){
+  //convert data to usable form
+  return response.json();
+}
 
-    //create the table element
-    var table = document.createElement("table");
+//define callback function
+function callback(response){
+    //tasks using the data go here
+    console.log(JSON.stringify(response))
+}
 
-    //create a header row
-    var headerRow = document.createElement("tr");
-
-    //add the "City" column
-    var cityHeader = document.createElement("th");
-    cityHeader.innerHTML = "City";
-    headerRow.appendChild(cityHeader);
-
-    //add the "Population" column
-    var popHeader = document.createElement("th");
-    popHeader.innerHTML = "Population";
-    headerRow.appendChild(popHeader);
-
-    //add the row to the table
-    table.appendChild(headerRow);
-
-    //loop to add a new row for each city
-    for (var i = 0; i < cities.length; i++){
-        var tr = document.createElement("tr");
-
-        var city = document.createElement("td");
-        city.innerHTML = cities[i];
-        tr.appendChild(city);
-
-        var pop = document.createElement("td");
-        pop.innerHTML = population[i];
-        tr.appendChild(pop);
-
-        table.appendChild(tr);
-    };
-
-    /*add the table to the div in index.html
-    var mydiv = document.getElementById("mydiv");
-    mydiv.appendChild(table);
-    */
-    
-    /*
-    var myDiv = document.querySelector("#mydiv");
-    mydiv.appendChild(table);
-    */
-    document.querySelector("#mydiv").appendChild(table);
-};
-
-//call the initialize function when the window has loaded
-window.onload = initialize();
+window.onload = jsAjax();
